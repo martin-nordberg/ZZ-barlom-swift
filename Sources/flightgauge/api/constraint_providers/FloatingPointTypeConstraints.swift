@@ -1,7 +1,11 @@
+//
+// (C) Copyright 2016 Martin E. Nordberg III
+// Apache 2.0 License
+//
+
 ///
 /// Constraint provider for floating point numbers.
 ///
-
 public class FloatingPointTypeConstraints<T where T: FloatingPointType, T: IntegerLiteralConvertible>: SignedNumberTypeConstraints<T> {
     /// Returns a constraint that checks that a number is finite.
 

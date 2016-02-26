@@ -1,7 +1,11 @@
+//
+// (C) Copyright 2016 Martin E. Nordberg III
+// Apache 2.0 License
+//
+
 ///
 /// Flag for the allowed cyclicity of an edge type.
 ///
-
 public enum ECyclicity {
 
   /// An abstract edge type is not constrained for cyclicity.

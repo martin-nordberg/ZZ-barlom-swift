@@ -1,8 +1,12 @@
+//
+// (C) Copyright 2016 Martin E. Nordberg III
+// Apache 2.0 License
+//
+
 ///
 /// Common higher order constraint that computes a test result from a predicate and a function that
 /// computes the message when needed for a failure.
 ///
-
 public class BasicConstraint<T>: Constraint {
     public typealias ValueType = T
 

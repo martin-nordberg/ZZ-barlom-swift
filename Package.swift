@@ -8,13 +8,15 @@ let package = Package(
     name: "Barlom",
     targets: [
         Target(
-            name: "barlom_metamodel",
+        name: "all_specs",
             dependencies: [
-                .Target( name: "flightgear" )
+                .Target( name: "flightgear_specs" ),
+                .Target( name: "flightspec" ),
+                .Target( name: "flightyear_specs" )
             ]
         ),
         Target(
-            name: "barlom_metamodel_api",
+            name: "barlom_metamodel",
             dependencies: [
                 .Target( name: "flightgear" )
             ]
@@ -45,13 +47,9 @@ let package = Package(
             name: "flightyear"
         ),
         Target(
-            name: "main",
+            name: "flightyear_specs",
             dependencies: [
-                .Target( name: "barlom_metamodel" ),
-                .Target( name: "barlom_metamodel_api" ),
                 .Target( name: "flightgauge" ),
-                .Target( name: "flightgear" ),
-                .Target( name: "flightgear_specs" ),
                 .Target( name: "flightspec" ),
                 .Target( name: "flightyear" )
             ]

@@ -1,7 +1,11 @@
+//
+// (C) Copyright 2016 Martin E. Nordberg III
+// Apache 2.0 License
+//
+
 ///
 /// Concrete constraint class enforces equality of an actual value with an expected value.
 ///
-
 public class EquatableConstraints<T where T: Equatable> {
     /// Returns a constraint that checks that an actual value equals an expected value.
     public func equalTo(

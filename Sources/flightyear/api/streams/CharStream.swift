@@ -1,9 +1,13 @@
+//
+// (C) Copyright 2016 Martin E. Nordberg III
+// Apache 2.0 License
+//
+
 ///
 /// Base class for a character input stream.
 ///
 /// Reference: http://www.quanttec.com/fparsec/reference/charstream.html#CharStream.members.Seek
 ///
-
 public class CharStream {
 
     private let _chars : String

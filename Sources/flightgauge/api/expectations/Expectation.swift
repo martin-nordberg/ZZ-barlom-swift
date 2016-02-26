@@ -1,10 +1,14 @@
+//
+// (C) Copyright 2016 Martin E. Nordberg III
+// Apache 2.0 License
+//
+
 ///
 /// Protocol defining the starting point for a fluent interfaced expectation.
 ///
-
 public protocol Expectation {
     /// The type of the value expected to satisfy some condition.
-associatedtype ValueType
+    associatedtype ValueType
 
     ///
     /// Performs a constraint check, giving back a constraint check result.

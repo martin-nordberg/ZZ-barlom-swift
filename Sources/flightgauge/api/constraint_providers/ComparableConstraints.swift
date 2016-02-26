@@ -1,7 +1,11 @@
+//
+// (C) Copyright 2016 Martin E. Nordberg III
+// Apache 2.0 License
+//
+
 ///
 /// Concrete constraint class for checking comparable values - less than, greater than, etc.
 ///
-
 public class ComparableConstraints<T where T: Comparable>: EquatableConstraints<T> {
     /// Returns a constraint that checks that the actual value is greater than a comparable value."
     public func greaterThan(

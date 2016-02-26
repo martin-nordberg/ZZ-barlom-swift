@@ -1,7 +1,11 @@
+//
+// (C) Copyright 2016 Martin E. Nordberg III
+// Apache 2.0 License
+//
+
 ///
 /// Flag for the allowed self-loops of an edge type.
 ///
-
 public enum ESelfLooping {
 
   /// An abstract edge type is not constrained for self looping.

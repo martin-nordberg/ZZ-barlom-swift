@@ -1,7 +1,11 @@
+//
+// (C) Copyright 2016 Martin E. Nordberg III
+// Apache 2.0 License
+//
+
 ///
 /// An expectation where the actual value does not exist.
 ///
-
 public class NonexistentExpectation<T>: Expectation {
     public typealias ValueType = T
 

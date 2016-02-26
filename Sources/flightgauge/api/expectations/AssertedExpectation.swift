@@ -1,5 +1,11 @@
-/// Adapter class wraps an expectation and throws an assertion if it fails when checked.
+//
+// (C) Copyright 2016 Martin E. Nordberg III
+// Apache 2.0 License
+//
 
+///
+/// Adapter class wraps an expectation and throws an assertion if it fails when checked.
+///
 public class AssertedExpectation<T> {
 
     private let expectation: AnyExpectation<T>

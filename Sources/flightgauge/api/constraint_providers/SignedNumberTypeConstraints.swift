@@ -1,7 +1,11 @@
+//
+// (C) Copyright 2016 Martin E. Nordberg III
+// Apache 2.0 License
+//
+
 ///
 /// Constraint provider for signed numbers.
 ///
-
 public class SignedNumberTypeConstraints<T where T: Comparable, T: IntegerLiteralConvertible>: ComparableConstraints<T> {
     /// Returns a constraint that checks that a number is negative (less than 0).
 

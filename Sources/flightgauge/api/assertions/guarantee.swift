@@ -1,3 +1,8 @@
+//
+// (C) Copyright 2016 Martin E. Nordberg III
+// Apache 2.0 License
+//
+
 ///
 /// Top level function establishes the start of a declarative asserted expectation. Intended for
 ///    writing function postconditions.

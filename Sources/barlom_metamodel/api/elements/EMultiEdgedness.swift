@@ -1,7 +1,11 @@
+//
+// (C) Copyright 2016 Martin E. Nordberg III
+// Apache 2.0 License
+//
+
 ///
 /// Flag for the allowed multi-edges of an edge type.
 ///
-
 public enum EMultiEdgedness {
 
   /// An abstract edge type is not constrained for multi-edgedness.

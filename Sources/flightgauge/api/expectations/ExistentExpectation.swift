@@ -1,7 +1,11 @@
+//
+// (C) Copyright 2016 Martin E. Nordberg III
+// Apache 2.0 License
+//
+
 ///
 /// An expectation where the actual value does exist.
 ///
-
 public class ExistentExpectation<T>: Expectation {
     public typealias ValueType = T
 

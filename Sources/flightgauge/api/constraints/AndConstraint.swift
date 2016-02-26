@@ -1,7 +1,11 @@
+//
+// (C) Copyright 2016 Martin E. Nordberg III
+// Apache 2.0 License
+//
+
 ///
 /// Constraint that is the conjunction of two other constraints.
 ///
-
 public class AndConstraint<T>: Constraint {
 
     private let constraint1: AnyConstraint<T>;

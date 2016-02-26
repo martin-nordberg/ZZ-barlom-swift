@@ -1,9 +1,13 @@
 //
-// Created by mnordberg on 2/24/16.
+// (C) Copyright 2016 Martin E. Nordberg III
+// Apache 2.0 License
 //
 
 import flightgauge
 
+///
+/// Entry point to create a simple text report for a constraint checking result.
+///
 public func runTextReport( testResult: ConstraintCheckResult ) -> String {
 
     return buildTextReport( testResult )

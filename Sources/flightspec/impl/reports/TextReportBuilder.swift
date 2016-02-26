@@ -1,5 +1,6 @@
 //
-// Created by mnordberg on 2/24/16.
+// (C) Copyright 2016 Martin E. Nordberg III
+// Apache 2.0 License
 //
 
 import flightgauge
@@ -46,20 +47,18 @@ func buildTextReport( testResult: ConstraintCheckResult ) -> String {
 
     let successCount = testResult.successCount
     if ( successCount == 1 ) {
-        result += "1 Test Succeeded\n"
+        result += "1 Test Succeeded.\n"
     }
     else {
-        result += successCount.description
-        result += " Tests Succeeded\n"
+        result += "\(successCount.description) Tests Succeeded.\n"
     }
 
     let failureCount = testResult.failureCount
     if ( failureCount == 1 ) {
-        result += "1 Test Failed\n"
+        result += "1 Test Failed.\n"
     }
     else {
-        result += failureCount.description
-        result += " Tests Failed\n"
+        result += "\(failureCount.description) Tests Failed.\n"
     }
 
     return result
