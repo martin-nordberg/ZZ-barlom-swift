@@ -7,6 +7,7 @@
 /// Protocol defining the starting point for a fluent interfaced expectation.
 ///
 public protocol Expectation {
+
     /// The type of the value expected to satisfy some condition.
     associatedtype ValueType
 

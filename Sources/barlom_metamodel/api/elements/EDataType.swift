@@ -6,18 +6,19 @@
 ///
 /// Enumeration of attribute data types.
 ///
+
 enum EDataType {
 
-  case Boolean
+    case Boolean
 
-  case DateTime
+    case DateTime
 
-  case Float64
+    case Float64
 
-  case Integer32
+    case Integer32
 
-  case String
+    case String
 
-  case Uuid
+    case Uuid
 
 }

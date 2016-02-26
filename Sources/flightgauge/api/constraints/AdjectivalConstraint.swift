@@ -6,7 +6,9 @@
 ///
 /// A constraint with messages expressed in terms of a simple adjective like 'empty' or 'ready'.
 ///
-public class AdjectivalConstraint<T>: BasicConstraint<T> {
+public class AdjectivalConstraint<T>
+    : BasicConstraint<T> {
+
     public required init(
         checkCondition: T throws -> Bool,
         adjective: String
@@ -28,5 +30,6 @@ public class AdjectivalConstraint<T>: BasicConstraint<T> {
             makeFailureMessage: makeFailureMessage,
             makeExceptionMessage: makeExceptionMessage )
     }
+
 }
 

@@ -6,7 +6,9 @@
 ///
 /// Concrete constraint class for checking comparable values - less than, greater than, etc.
 ///
-public class ComparableConstraints<T where T: Comparable>: EquatableConstraints<T> {
+public class ComparableConstraints<T where T: Comparable>
+    : EquatableConstraints<T> {
+
     /// Returns a constraint that checks that the actual value is greater than a comparable value."
     public func greaterThan(
         comparableValue: T
@@ -50,6 +52,7 @@ public class ComparableConstraints<T where T: Comparable>: EquatableConstraints<
 
         return AnyConstraint( ComparisonConstraint<T>( checkCondition: compare, comparisonText: "less than or equal to", comparableValue: comparableValue ) )
     }
+
 }
 
 

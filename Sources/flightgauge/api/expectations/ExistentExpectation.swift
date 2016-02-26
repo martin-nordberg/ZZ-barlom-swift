@@ -6,7 +6,9 @@
 ///
 /// An expectation where the actual value does exist.
 ///
-public class ExistentExpectation<T>: Expectation {
+public class ExistentExpectation<T>
+    : Expectation {
+
     public typealias ValueType = T
 
     public let actualValue: T

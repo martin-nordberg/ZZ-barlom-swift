@@ -6,9 +6,10 @@
 ///
 /// Constraint provider for signed numbers.
 ///
-public class SignedNumberTypeConstraints<T where T: Comparable, T: IntegerLiteralConvertible>: ComparableConstraints<T> {
-    /// Returns a constraint that checks that a number is negative (less than 0).
+public class SignedNumberTypeConstraints<T where T: Comparable, T: IntegerLiteralConvertible>
+    : ComparableConstraints<T> {
 
+    /// Returns a constraint that checks that a number is negative (less than 0).
     public var thatIsNegative: AnyConstraint<T> {
         get {
             func compare( actualValue: T ) -> Bool {
@@ -19,7 +20,6 @@ public class SignedNumberTypeConstraints<T where T: Comparable, T: IntegerLitera
     }
 
     /// Returns a constraint that checks that a number is not negative (less than 0).
-
     public var thatIsNonnegative: AnyConstraint<T> {
         get {
             func compare( actualValue: T ) -> Bool {
@@ -30,7 +30,6 @@ public class SignedNumberTypeConstraints<T where T: Comparable, T: IntegerLitera
     }
 
     /// Returns a constraint that checks that a number is not negative (less than 0).
-
     public var thatIsNonpositive: AnyConstraint<T> {
         get {
             func compare( actualValue: T ) -> Bool {
@@ -41,7 +40,6 @@ public class SignedNumberTypeConstraints<T where T: Comparable, T: IntegerLitera
     }
 
     /// Returns a constraint that checks that a number is nonzero.
-
     public var thatIsNonzero: AnyConstraint<T> {
         get {
             func compare( actualValue: T ) -> Bool {
@@ -52,7 +50,6 @@ public class SignedNumberTypeConstraints<T where T: Comparable, T: IntegerLitera
     }
 
     /// Returns a constraint that checks that a number is posittive (greater than than 0).
-
     public var thatIsPositive: AnyConstraint<T> {
         get {
             func compare( actualValue: T ) -> Bool {
@@ -63,7 +60,6 @@ public class SignedNumberTypeConstraints<T where T: Comparable, T: IntegerLitera
     }
 
     /// Returns a constraint that checks that a number is zero.
-
     public var thatIsZero: AnyConstraint<T> {
         get {
             func compare( actualValue: T ) -> Bool {

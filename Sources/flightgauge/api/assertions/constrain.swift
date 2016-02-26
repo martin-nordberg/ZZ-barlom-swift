@@ -19,9 +19,8 @@
 public func constrain<T>(
     actualValue: T?,
     named valueName: String = "value",
-    file: StaticString =
-#file,
-line: UInt = #line
+    file: StaticString = #file,
+    line: UInt = #line
 ) -> AssertedExpectation<T> {
     return AssertedExpectation( expect( actualValue, named: valueName ), file, line );
 }

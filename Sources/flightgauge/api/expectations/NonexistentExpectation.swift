@@ -6,7 +6,9 @@
 ///
 /// An expectation where the actual value does not exist.
 ///
-public class NonexistentExpectation<T>: Expectation {
+public class NonexistentExpectation<T>
+    : Expectation {
+
     public typealias ValueType = T
 
     public let valueName: String
@@ -30,4 +32,5 @@ public class NonexistentExpectation<T>: Expectation {
     public func toNotExist() -> ConstraintCheckResult {
         return .ConstraintCheckSuccess( message: "Verified that \( self.valueName ) does not exist." )
     }
+
 }

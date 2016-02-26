@@ -6,7 +6,8 @@
 ///
 /// Constraint provider for a boolean value.
 ///
-public class BoolConstraintProvider: EquatableConstraints<Bool> {
+public class BoolConstraintProvider
+    : EquatableConstraints<Bool> {
 
     ///
     /// Returns a constraint that checks that a boolean value is false.

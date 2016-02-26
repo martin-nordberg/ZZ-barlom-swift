@@ -6,7 +6,8 @@
 ///
 /// Constraint that is the conjunction of two other constraints.
 ///
-public class AndConstraint<T>: Constraint {
+public class AndConstraint<T>
+    : Constraint {
 
     private let constraint1: AnyConstraint<T>;
     private let constraint2: AnyConstraint<T>;

@@ -7,6 +7,7 @@
 /// Concrete constraint class enforces equality of an actual value with an expected value.
 ///
 public class EquatableConstraints<T where T: Equatable> {
+
     /// Returns a constraint that checks that an actual value equals an expected value.
     public func equalTo(
         expectedValue: T
@@ -37,5 +38,6 @@ public class EquatableConstraints<T where T: Equatable> {
     ) -> AnyConstraint<T> {
         return self.equalTo( expectedValue )
     }
+
 }
 

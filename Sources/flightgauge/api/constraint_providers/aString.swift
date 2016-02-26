@@ -6,7 +6,8 @@
 ///
 /// Constraint provider for a string value.
 ///
-public class StringConstraints: ComparableConstraints<String> {
+public class StringConstraints
+    : ComparableConstraints<String> {
     ///
     /// Returns a constraint that checks that a string is longer than a given length.
     ///

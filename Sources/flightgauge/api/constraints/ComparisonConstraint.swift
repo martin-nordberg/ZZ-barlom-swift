@@ -6,7 +6,9 @@
 ///
 /// Typical higher order constraint that produces standard messages for comparing an actual and comparable value.
 ///
-public class ComparisonConstraint<T>: AdjectivalConstraint<T> {
+public class ComparisonConstraint<T>
+    : AdjectivalConstraint<T> {
+
     public required init(
         checkCondition: ( T ) throws -> Bool,
         comparisonText: String,
