@@ -25,10 +25,10 @@ public class StringStreamImpl : BaseCharStream {
     ///
     /// Constructs a new input stream that will read the given string.
     ///
-    public init( chars : String, index : Int = 0, length: Int = -1 ) {
+    public init( text : String, index : Int, length: Int ) {
 
-        self._chars = chars
-        self._index = chars.characters.startIndex.advancedBy( index )
+        self._chars = text
+        self._index = text.characters.startIndex.advancedBy( index )
         self._line = 0
         self._name = ""
         self._stateTag = 0
@@ -39,7 +39,7 @@ public class StringStreamImpl : BaseCharStream {
             self.indexOfLastCharPlus1 = self._index.advancedBy( length )
         }
         else {
-            self.indexOfLastCharPlus1 = chars.characters.endIndex
+            self.indexOfLastCharPlus1 = text.characters.endIndex
         }
 
     }
@@ -94,7 +94,7 @@ public class StringStreamImpl : BaseCharStream {
 
     public func peek() -> Character {
         if ( self.isEndOfStream ) {
-            return CharStream.endOfStreamChar
+            return END_OF_STREAM_CHAR
         }
         return self._chars.characters[self._index]
     }
@@ -109,7 +109,7 @@ public class StringStreamImpl : BaseCharStream {
 
     public func read() -> Character {
         if ( self.isEndOfStream ) {
-            return CharStream.endOfStreamChar
+            return END_OF_STREAM_CHAR
         }
 
         let result = self._chars[self._index]
@@ -124,11 +124,12 @@ public class StringStreamImpl : BaseCharStream {
 
     // TODO: registerNewLines
 
-    public func skip() {
+    public func skip() -> Self {
         if ( !self.isEndOfStream ) {
             self._index = self._index.advancedBy( 1 )
             self._stateTag += 1;
         }
+        return self
     }
 
     public func skip( char: Character ) -> Bool {

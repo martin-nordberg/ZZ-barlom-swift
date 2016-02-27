@@ -9,5 +9,5 @@ add_custom_target(
 add_custom_target(
         BARLOM swift build
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-        SOURCES Sources/main/main.swift
+        SOURCES Sources/all_specs/main.swift
 )

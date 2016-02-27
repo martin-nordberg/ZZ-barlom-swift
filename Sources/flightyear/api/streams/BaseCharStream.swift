@@ -8,7 +8,7 @@
 ///
 /// Reference: http://www.quanttec.com/fparsec/reference/charstream.html#CharStream.members.Seek
 ///
-protocol BaseCharStream {
+public protocol BaseCharStream {
 
     // TODO var column : Int
 
@@ -54,7 +54,7 @@ protocol BaseCharStream {
 
     // TODO: registerNewLines
 
-    func skip()
+    func skip() -> Self
 
     func skip( char: Character ) -> Bool
 

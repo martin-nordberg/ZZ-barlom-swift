@@ -11,6 +11,11 @@ import flightgauge
 public typealias Outcomes = ([ConstraintCheckResult]) -> ()
 
 ///
+/// Type synonym for a dictionary of imperative tests.
+///
+public typealias Tests = [ String: ( Outcomes ) -> () ]
+
+///
 /// A specification consisting of a collection of test functions that return outcomes.
 ///
 public protocol ImperativeSpecification : Specification {

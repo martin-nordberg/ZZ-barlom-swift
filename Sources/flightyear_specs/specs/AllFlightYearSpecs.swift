@@ -8,6 +8,7 @@ import flightspec
 public let allFlightYearSpecs = CompositeSpecification(
     title: "Flight Year Specifications",
     childSpecifications: [
-        CharStreamSpec()
+        StringStreamBeginningEndSpec(),
+        StringStreamCharacterReadingSpec()
     ]
 )
