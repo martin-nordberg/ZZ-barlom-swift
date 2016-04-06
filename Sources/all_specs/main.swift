@@ -7,6 +7,7 @@ import flightgear_specs
 import flightspec
 import flightyear_specs
 
+
 print( runTextReport( checkSpecification(
     CompositeSpecification(
         title:"All Specifications",
@@ -16,3 +17,5 @@ print( runTextReport( checkSpecification(
         ]
     )
 ) ) )
+
+print()

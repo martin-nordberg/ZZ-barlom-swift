@@ -14,9 +14,13 @@ public class StringStreamImpl : BaseCharStream {
 
     private var _index : String.CharacterView.Index
 
+    private let _indexOfFirstChar : String.CharacterView.Index
+
+    private var _indexOfLastCharPlus1 : String.CharacterView.Index
+
     private var _line : Int
 
-    // TODO: _lineBegin
+    private var _lineBegin : String.CharacterView.Index
 
     private var _name : String
 
@@ -25,58 +29,61 @@ public class StringStreamImpl : BaseCharStream {
     ///
     /// Constructs a new input stream that will read the given string.
     ///
-    public init( text : String, index : Int, length: Int ) {
+    public init( text : String, startIndex: Int = 0, length: Int = -1 ) {
 
         self._chars = text
-        self._index = text.characters.startIndex.advancedBy( index )
-        self._line = 0
+        self._index = text.characters.startIndex.advancedBy( startIndex )
+        self._indexOfFirstChar = self._index
+        self._lineBegin = self._index;
+        self._line = 1
         self._name = ""
         self._stateTag = 0
 
-        self.indexOfFirstChar = self._index
-
         if ( length >= 0 ) {
-            self.indexOfLastCharPlus1 = self._index.advancedBy( length )
+            self._indexOfLastCharPlus1 = self._index.advancedBy( length )
         }
         else {
-            self.indexOfLastCharPlus1 = text.characters.endIndex
+            self._indexOfLastCharPlus1 = text.characters.endIndex
         }
 
     }
 
-    // TODO public var column : Int
+    public var column : Int {
 
-    public static let endOfStreamChar : Character = "\u{FFFF}"
+        get {
+            return self._lineBegin.distanceTo( self._index ) + 1
+        }
 
-    public var index : String.CharacterView.Index {
-        return self._index
     }
-
-    public let indexOfFirstChar : String.CharacterView.Index
-
-    public var indexOfLastCharPlus1 : String.CharacterView.Index
 
     // TODO: indexToken
 
     public var isBeginningOfStream : Bool {
-        return self._index == self.indexOfFirstChar
+        return self._index == self._indexOfFirstChar
     }
 
     public var isEndOfStream : Bool {
-        return self._index == self.indexOfLastCharPlus1
+        return self._index == self._indexOfLastCharPlus1
     }
 
     public var line : Int {
         return self._line
     }
 
-    // TODO: lineBegin
-
     public func match( char: Character ) -> Bool {
         return !self.isEndOfStream && self._chars[self._index] == char
     }
 
-    // TODO: public func match( chars: String ) -> Bool
+    public func matchString( chars: String ) -> Bool {
+        var pos = self._index
+        for char in chars.characters {
+            if ( pos == self._indexOfLastCharPlus1 || self._chars[pos] != char ) {
+                return false
+            }
+            pos = pos.advancedBy( 1 )
+        }
+        return true
+    }
 
     // TODO: public func match( regex: Regex ) -> Bool
 
@@ -105,8 +112,6 @@ public class StringStreamImpl : BaseCharStream {
 
     // TODO: peekString
 
-    // TODO: position
-
     public func read() -> Character {
         if ( self.isEndOfStream ) {
             return END_OF_STREAM_CHAR
@@ -118,6 +123,13 @@ public class StringStreamImpl : BaseCharStream {
         self._index = self._index.advancedBy( 1 )
 
         return result
+    }
+
+    public func readCharOrNewline() -> Character {
+        if ( self.skipNewline() ) {
+            return "\n"
+        }
+        return self.read()
     }
 
     // TODO: registerNewLine
@@ -142,11 +154,56 @@ public class StringStreamImpl : BaseCharStream {
 
     // TODO: public func skip( offset: Int )
 
-    // TODO: public func skip( chars: String )
+    public func skipString( chars: String ) -> Bool {
+        if ( self.matchString( chars ) ) {
+            self._index = self._index.advancedBy( chars.characters.count )
+            self._stateTag += 1;
+            return true
+        }
+        return false
+    }
 
     // TODO: skipAndPeek
 
     // TODO: skipCaseFolded
+
+    public func skipNewline() -> Bool {
+        if ( !self.match( "\n" ) && !self.match( "\r\n" ) && !self.match( "\r" ) ) {
+            return false;
+        }
+
+        self._index = self._index.advancedBy( 1 )
+        self._lineBegin = self._index
+        self._line += 1
+        self._stateTag += 1;
+        return true;
+    }
+
+    public func skipWhitespace() -> Bool {
+        var result = false
+        var more = true
+
+        while ( more ) {
+            switch self.peek() {
+                case " ":
+                    fallthrough
+                case "\t":
+                    self.skip()
+                    result = true
+                case "\r":
+                    fallthrough
+                case "\r\n":
+                    fallthrough
+                case "\n":
+                    self.skipNewline()
+                    result = true
+                default:
+                    more = false
+            }
+        }
+
+        return result
+    }
 
     public var stateTag : Int {
         return self._stateTag

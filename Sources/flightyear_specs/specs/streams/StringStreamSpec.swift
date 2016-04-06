@@ -18,7 +18,7 @@ public class StringStreamBeginningEndSpec: ImperativeSpecification {
             let stream = makeStringStream( "some text" )
 
             outcomes( [
-                expect( stream.isBeginningOfStream, named: "isBeginningOfStream" ).toBe( aBoolean.thatIsTrue )
+                expect( stream.isBeginningOfStream, named: "isBeginningOfStream", toBe: aBoolean.thatIsTrue )
             ] )
 
         },
@@ -30,7 +30,7 @@ public class StringStreamBeginningEndSpec: ImperativeSpecification {
             stream.read()
 
             outcomes( [
-                expect( stream.isBeginningOfStream, named: "isBeginningOfStream" ).toBe( aBoolean.thatIsFalse )
+                expect( stream.isBeginningOfStream, named: "isBeginningOfStream", toBe: aBoolean.thatIsFalse )
             ] )
 
         },
@@ -44,8 +44,8 @@ public class StringStreamBeginningEndSpec: ImperativeSpecification {
             }
 
             outcomes( [
-                expect( stream.isBeginningOfStream, named: "isBeginningOfStream" ).toBe( aBoolean.thatIsFalse ),
-                expect( stream.isEndOfStream, named: "isEndOfStream" ).toBe( aBoolean.thatIsTrue )
+                expect( stream.isBeginningOfStream, named: "isBeginningOfStream", toBe: aBoolean.thatIsFalse ),
+                expect( stream.isEndOfStream, named: "isEndOfStream", toBe: aBoolean.thatIsTrue )
             ] )
 
         },
@@ -55,8 +55,8 @@ public class StringStreamBeginningEndSpec: ImperativeSpecification {
             let stream = makeStringStream( "" )
 
             outcomes( [
-                expect( stream.isBeginningOfStream, named: "isBeginningOfStream" ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.isEndOfStream, named: "isEndOfStream" ).toBe( aBoolean.thatIsTrue )
+                expect( stream.isBeginningOfStream, named: "isBeginningOfStream", toBe: aBoolean.thatIsTrue ),
+                expect( stream.isEndOfStream, named: "isEndOfStream", toBe: aBoolean.thatIsTrue )
             ] )
 
         }
@@ -76,15 +76,16 @@ public class StringStreamCharacterReadingSpec: ImperativeSpecification {
             let stream = makeStringStream( "some text" )
 
             outcomes( [
-                expect( stream.read() ).toBe( aCharacter.equalTo( "s" ) ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "o" ) ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "m" ) ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "e" ) ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( " " ) ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "t" ) ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "e" ) ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "x" ) ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "t" ) )
+                expect( stream.read(), toBe: aCharacter.equalTo( "s" ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "o" ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "m" ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "e" ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( " " ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "t" ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "e" ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "x" ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "t" ) ),
+                expect( stream.isEndOfStream, toBe: aBoolean.thatIsTrue )
             ] )
 
         },
@@ -94,31 +95,32 @@ public class StringStreamCharacterReadingSpec: ImperativeSpecification {
             let stream = makeStringStream( "some text" )
 
             outcomes( [
-                expect( stream.match("q") ).toBe( aBoolean.thatIsFalse ),
-                expect( stream.match("s") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.match("s") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "s" ) ),
-                expect( stream.match("o") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "o" ) ),
-                expect( stream.match("m") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.match("m") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "m" ) ),
-                expect( stream.match("e") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "e" ) ),
-                expect( stream.match("x") ).toBe( aBoolean.thatIsFalse ),
-                expect( stream.match("j") ).toBe( aBoolean.thatIsFalse ),
-                expect( stream.match(" ") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( " " ) ),
-                expect( stream.match("t") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "t" ) ),
-                expect( stream.match("e") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "e" ) ),
-                expect( stream.match("w") ).toBe( aBoolean.thatIsFalse ),
-                expect( stream.match("x") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "x" ) ),
-                expect( stream.match("t") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.match("t") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "t" ) ),
+                expect( stream.match("q"), toBe: aBoolean.thatIsFalse ),
+                expect( stream.match("s"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.match("s"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "s" ) ),
+                expect( stream.match("o"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "o" ) ),
+                expect( stream.match("m"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.match("m"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "m" ) ),
+                expect( stream.match("e"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "e" ) ),
+                expect( stream.match("x"), toBe: aBoolean.thatIsFalse ),
+                expect( stream.match("j"), toBe: aBoolean.thatIsFalse ),
+                expect( stream.match(" "), toBe: aBoolean.thatIsTrue ),
+                expect( stream.read(), toBe: aCharacter.equalTo( " " ) ),
+                expect( stream.match("t"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "t" ) ),
+                expect( stream.match("e"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "e" ) ),
+                expect( stream.match("w"), toBe: aBoolean.thatIsFalse ),
+                expect( stream.match("x"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "x" ) ),
+                expect( stream.match("t"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.match("t"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "t" ) ),
+                expect( stream.isEndOfStream, toBe: aBoolean.thatIsTrue )
             ] )
 
         },
@@ -128,19 +130,20 @@ public class StringStreamCharacterReadingSpec: ImperativeSpecification {
             let stream = makeStringStream( "some text" )
 
             outcomes( [
-                expect( stream.skip("q") ).toBe( aBoolean.thatIsFalse ),
-                expect( stream.skip("s") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.skip("o") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.skip("m") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.skip("e") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.skip("x") ).toBe( aBoolean.thatIsFalse ),
-                expect( stream.skip("j") ).toBe( aBoolean.thatIsFalse ),
-                expect( stream.skip(" ") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.skip("t") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.skip("e") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.skip("w") ).toBe( aBoolean.thatIsFalse ),
-                expect( stream.skip("x") ).toBe( aBoolean.thatIsTrue ),
-                expect( stream.skip("t") ).toBe( aBoolean.thatIsTrue ),
+                expect( stream.skip("q"), toBe: aBoolean.thatIsFalse ),
+                expect( stream.skip("s"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("o"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("m"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("e"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("x"), toBe: aBoolean.thatIsFalse ),
+                expect( stream.skip("j"), toBe: aBoolean.thatIsFalse ),
+                expect( stream.skip(" "), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("t"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("e"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("w"), toBe: aBoolean.thatIsFalse ),
+                expect( stream.skip("x"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("t"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.isEndOfStream, toBe: aBoolean.thatIsTrue )
             ] )
 
         },
@@ -150,22 +153,23 @@ public class StringStreamCharacterReadingSpec: ImperativeSpecification {
             let stream = makeStringStream( "some text" )
 
             outcomes( [
-                expect( stream.peek() ).toBe( aCharacter.equalTo( "s" ) ),
-                expect( stream.peek() ).toBe( aCharacter.equalTo( "s" ) ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "s" ) ),
-                expect( stream.peek() ).toBe( aCharacter.equalTo( "o" ) ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "o" ) ),
-                expect( stream.peek() ).toBe( aCharacter.equalTo( "m" ) ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "m" ) ),
-                expect( stream.peek() ).toBe( aCharacter.equalTo( "e" ) ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "e" ) ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( " " ) ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "t" ) ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "e" ) ),
-                expect( stream.peek() ).toBe( aCharacter.equalTo( "x" ) ),
-                expect( stream.peek() ).toBe( aCharacter.equalTo( "x" ) ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "x" ) ),
-                expect( stream.read() ).toBe( aCharacter.equalTo( "t" ) )
+                expect( stream.peek(), toBe: aCharacter.equalTo( "s" ) ),
+                expect( stream.peek(), toBe: aCharacter.equalTo( "s" ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "s" ) ),
+                expect( stream.peek(), toBe: aCharacter.equalTo( "o" ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "o" ) ),
+                expect( stream.peek(), toBe: aCharacter.equalTo( "m" ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "m" ) ),
+                expect( stream.peek(), toBe: aCharacter.equalTo( "e" ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "e" ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( " " ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "t" ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "e" ) ),
+                expect( stream.peek(), toBe: aCharacter.equalTo( "x" ) ),
+                expect( stream.peek(), toBe: aCharacter.equalTo( "x" ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "x" ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "t" ) ),
+                expect( stream.isEndOfStream, toBe: aBoolean.thatIsTrue )
             ] )
 
         },
@@ -175,11 +179,53 @@ public class StringStreamCharacterReadingSpec: ImperativeSpecification {
             let stream = makeStringStream( "some text" )
 
             outcomes( [
-                expect( stream.read() ).toBe( aCharacter.equalTo( "s" ) ),
-                expect( stream.skip().read() ).toBe( aCharacter.equalTo( "m" ) ),
-                expect( stream.skip().read() ).toBe( aCharacter.equalTo( " " ) ),
-                expect( stream.skip().read() ).toBe( aCharacter.equalTo( "e" ) ),
-                expect( stream.skip().read() ).toBe( aCharacter.equalTo( "t" ) ),
+                expect( stream.read(), toBe: aCharacter.equalTo( "s" ) ),
+                expect( stream.skip().read(), toBe: aCharacter.equalTo( "m" ) ),
+                expect( stream.skip().read(), toBe: aCharacter.equalTo( " " ) ),
+                expect( stream.skip().read(), toBe: aCharacter.equalTo( "e" ) ),
+                expect( stream.skip().read(), toBe: aCharacter.equalTo( "t" ) ),
+                expect( stream.isEndOfStream, toBe: aBoolean.thatIsTrue )
+            ] )
+
+        },
+
+        "A string and its newlines can be skipped.": { outcomes in
+
+            let stream = makeStringStream( "some\ntext\rmore\r\n" )
+
+            outcomes( [
+                expect( stream.skip("s"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("o"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("m"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("e"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skipNewline(), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("t"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("e"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("x"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("t"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skipNewline(), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("m"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("o"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("r"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skip("e"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skipNewline(), toBe: aBoolean.thatIsTrue ),
+                expect( stream.isEndOfStream, toBe: aBoolean.thatIsTrue )
+            ] )
+
+        },
+
+        "A string's substrings and whitespace are correctly skipped.": { outcomes in
+
+            let stream = makeStringStream( "some\n \ttext\t \r more\r\n" )
+
+            outcomes( [
+                expect( stream.skipString("some"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skipWhitespace(), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skipString("text"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skipWhitespace(), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skipString("more"), toBe: aBoolean.thatIsTrue ),
+                expect( stream.skipNewline(), toBe: aBoolean.thatIsTrue ),
+                expect( stream.isEndOfStream, toBe: aBoolean.thatIsTrue )
             ] )
 
         }

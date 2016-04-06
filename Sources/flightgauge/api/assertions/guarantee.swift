@@ -22,5 +22,5 @@ public func guarantee<T>(
     file: StaticString = #file,
     line: UInt = #line
 ) -> AssertedExpectation<T> {
-    return AssertedExpectation( expect( actualValue, named: valueName ), file, line );
+    return AssertedExpectation( makeExpectation( actualValue, named: valueName ), file, line );
 }

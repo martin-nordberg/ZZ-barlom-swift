@@ -18,11 +18,25 @@
 /// }
 /// ```
 ///
-public func expect<T>( maybeActualValue: T?, named valueName: String = "value" ) -> AnyExpectation<T> {
+public func makeExpectation<T>( maybeActualValue: T?, named valueName: String = "value" ) -> AnyExpectation<T> {
 
     if let actualValue = maybeActualValue {
         return AnyExpectation( ExistentExpectation( actualValue, named: valueName ) )
     }
 
     return AnyExpectation( NonexistentExpectation( named: valueName ) )
+
+}
+
+
+public func expect<T>( maybeActualValue: T?, named valueName: String = "value", toBe constraint: AnyConstraint<T> ) -> ConstraintCheckResult {
+
+    return makeExpectation( maybeActualValue, named: valueName ).toBe( constraint );
+
+}
+
+public func expect<T>( maybeActualValue: T?, named valueName: String = "value", toOptionallyBe constraint: AnyConstraint<T> ) -> ConstraintCheckResult {
+
+    return makeExpectation( maybeActualValue, named: valueName ).toOptionallyBe( constraint );
+
 }

@@ -29,8 +29,8 @@ public protocol CharStream
 /// Builds a character stream that reads from a given string.
 /// TODO: return CharStream
 ///
-public func makeStringStream( text : String, index : Int = 0, length: Int = -1 ) -> BaseCharStream {
+public func makeStringStream( text : String, startIndex : Int = 0, length: Int = -1 ) -> BaseCharStream {
 
-    return StringStreamImpl( text: text, index: index, length: length )
+    return StringStreamImpl( text: text, startIndex: startIndex, length: length )
 
 }
