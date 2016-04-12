@@ -5,11 +5,15 @@
 
 import flightgauge
 
+//---------------------------------------------------------------------------------------------------------------------
+
 ///
 /// Entry point to create a simple text report for a constraint checking result.
 ///
-public func runTextReport( testResult: ConstraintCheckResult ) -> String {
+public func runTextReport( testResult: EConstraintCheckResult ) -> String {
 
     return buildTextReport( testResult )
 
 }
+
+//---------------------------------------------------------------------------------------------------------------------

@@ -5,15 +5,21 @@
 
 import flightgauge
 
+//---------------------------------------------------------------------------------------------------------------------
+
 ///
 /// Type synonym for the callback function passed to an imperative test for collecting the results.
 ///
-public typealias Outcomes = ([ConstraintCheckResult]) -> ()
+public typealias Outcomes = ([EConstraintCheckResult]) -> ()
+
+//---------------------------------------------------------------------------------------------------------------------
 
 ///
 /// Type synonym for a dictionary of imperative tests.
 ///
 public typealias Tests = [ String: ( Outcomes ) -> () ]
+
+//---------------------------------------------------------------------------------------------------------------------
 
 ///
 /// A specification consisting of a collection of test functions that return outcomes.
@@ -28,17 +34,19 @@ public protocol ImperativeSpecification : Specification {
 
 }
 
+//---------------------------------------------------------------------------------------------------------------------
+
 extension ImperativeSpecification {
 
     ///
     /// Executes this specification, returning a constraint check result.
     ///
-    public func check() -> ConstraintCheckResult {
+    public func check() -> EConstraintCheckResult {
 
-        var testResults : [ConstraintCheckResult] = []
-        var specResults : [ConstraintCheckResult] = []
+        var testResults : [EConstraintCheckResult] = []
+        var specResults : [EConstraintCheckResult] = []
 
-        func outcomes( moreResults: [ConstraintCheckResult] ) {
+        func outcomes( moreResults: [EConstraintCheckResult] ) {
             testResults.appendContentsOf( moreResults )
         }
 
@@ -55,3 +63,5 @@ extension ImperativeSpecification {
     }
 
 }
+
+//---------------------------------------------------------------------------------------------------------------------

@@ -7,6 +7,8 @@ import flightgauge
 import flightspec
 import flightyear
 
+//---------------------------------------------------------------------------------------------------------------------
+
 public class StringStreamBeginningEndSpec: ImperativeSpecification {
 
     public var title = "String Stream Beginning/End Determination"
@@ -233,3 +235,4 @@ public class StringStreamCharacterReadingSpec: ImperativeSpecification {
 
 }
 
+//---------------------------------------------------------------------------------------------------------------------

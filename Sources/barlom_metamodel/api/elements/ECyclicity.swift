@@ -3,10 +3,13 @@
 // Apache 2.0 License
 //
 
+//---------------------------------------------------------------------------------------------------------------------
+
 ///
 /// Flag for the allowed cyclicity of an edge type.
 ///
 public enum ECyclicity {
+
     /// An abstract edge type is not constrained for cyclicity.
     case CyclicityUnconstrained
 
@@ -16,7 +19,9 @@ public enum ECyclicity {
     /// An edge type does allow cycles.
     case PotentiallyCyclic
 
+    ///
     /// Determines whether this cyclicity is acyclic.
+    ///
     public var isAcyclic: Bool? {
         get {
             switch self {
@@ -27,7 +32,9 @@ public enum ECyclicity {
         }
     }
 
+    ///
     /// Determines whether this cyclicity is potentially cyclic.
+    ///
     public var isPotentiallyCyclic: Bool? {
         get {
             switch self {
@@ -38,18 +45,25 @@ public enum ECyclicity {
         }
     }
 
+    ///
     /// Determines whether this cyclicity is unconstrained.
+    ///
     public var isUnconstrained: Bool {
         get {
             return self == CyclicityUnconstrained
         }
     }
 
+    ///
     /// Constructs a new cyclicity from a boolean value (true = acyclic, false = potentially cyclic, nil = unconstrained).
+    ///
     public static func fromBool( isAcyclic value: Bool? ) -> ECyclicity {
         if let value = value {
             return value ? Acyclic : PotentiallyCyclic
         }
         return CyclicityUnconstrained
     }
+
 }
+
+//---------------------------------------------------------------------------------------------------------------------

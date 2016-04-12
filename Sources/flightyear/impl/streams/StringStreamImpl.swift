@@ -3,6 +3,8 @@
 // Apache 2.0 License
 //
 
+//---------------------------------------------------------------------------------------------------------------------
+
 ///
 /// Base class for a character input stream.
 ///
@@ -27,7 +29,7 @@ public class StringStreamImpl : BaseCharStream {
     private var _stateTag : Int
 
     ///
-    /// Constructs a new input stream that will read the given string.
+    /// Constructs a new input stream that will read the given text string.
     ///
     public init( text : String, startIndex: Int = 0, length: Int = -1 ) {
 
@@ -111,6 +113,10 @@ public class StringStreamImpl : BaseCharStream {
     // TODO: peek2
 
     // TODO: peekString
+
+    public func position() -> Position {
+        return Position( name: self.name, line: self.line, column: self.column )
+    }
 
     public func read() -> Character {
         if ( self.isEndOfStream ) {
@@ -211,6 +217,7 @@ public class StringStreamImpl : BaseCharStream {
 
     // TODO: seek
 
-
-
 }
+
+//---------------------------------------------------------------------------------------------------------------------
+

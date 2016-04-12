@@ -20,15 +20,15 @@ public class ExistentExpectation<T>
         self.valueName = valueName
     }
 
-    public func toBe( constraint: AnyConstraint<T> ) -> ConstraintCheckResult {
+    public func toBe( constraint: AnyConstraint<T> ) -> EConstraintCheckResult {
         return constraint.check( self.actualValue, self.valueName );
     }
 
-    public func toOptionallyBe( constraint: AnyConstraint<T> ) -> ConstraintCheckResult {
+    public func toOptionallyBe( constraint: AnyConstraint<T> ) -> EConstraintCheckResult {
         return constraint.check( self.actualValue, self.valueName );
     }
 
-    public func toNotExist() -> ConstraintCheckResult {
+    public func toNotExist() -> EConstraintCheckResult {
         return .ConstraintCheckUnexpectedNull( message: "Expected \( self.valueName ) to not exist, but is \( self.actualValue )." )
     }
 }

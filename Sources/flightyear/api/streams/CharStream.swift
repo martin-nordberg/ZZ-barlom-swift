@@ -3,6 +3,8 @@
 // Apache 2.0 License
 //
 
+//---------------------------------------------------------------------------------------------------------------------
+
 ///
 /// Base class for a character input stream.
 ///
@@ -25,6 +27,8 @@ public protocol CharStream
 
 }
 
+//---------------------------------------------------------------------------------------------------------------------
+
 ///
 /// Builds a character stream that reads from a given string.
 /// TODO: return CharStream
@@ -34,3 +38,6 @@ public func makeStringStream( text : String, startIndex : Int = 0, length: Int =
     return StringStreamImpl( text: text, startIndex: startIndex, length: length )
 
 }
+
+//---------------------------------------------------------------------------------------------------------------------
+

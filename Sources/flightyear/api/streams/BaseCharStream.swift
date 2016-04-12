@@ -3,6 +3,8 @@
 // Apache 2.0 License
 //
 
+//---------------------------------------------------------------------------------------------------------------------
+
 ///
 /// Base class for a character input stream.
 ///
@@ -69,6 +71,11 @@ public protocol BaseCharStream {
     // TODO: peek2
 
     // TODO: peekString
+
+    ///
+    /// Returns the current position of the input stream
+    ///
+    func position() -> Position
 
     ///
     /// Skips over the next character in the stream. Returns the skipped char. At the end of the stream read() does
@@ -150,8 +157,12 @@ public protocol BaseCharStream {
 
 }
 
+//---------------------------------------------------------------------------------------------------------------------
+
 ///
 /// Character indicating a read past the end of a stream.
 ///
 public let END_OF_STREAM_CHAR : Character = "\u{FFFF}"
+
+//---------------------------------------------------------------------------------------------------------------------
 

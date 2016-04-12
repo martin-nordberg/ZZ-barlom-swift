@@ -5,6 +5,8 @@
 
 import flightgauge
 
+//---------------------------------------------------------------------------------------------------------------------
+
 ///
 /// A specification composed of child specifications.
 ///
@@ -21,9 +23,9 @@ public class CompositeSpecification : Specification {
     ///
     /// Executes this specification, returning a constraint check result.
     ///
-    public func check() -> ConstraintCheckResult {
+    public func check() -> EConstraintCheckResult {
 
-        var childResults : [ConstraintCheckResult] = []
+        var childResults : [EConstraintCheckResult] = []
 
         for childSpec in self._childSpecifications {
             childResults.append( childSpec.check() )
@@ -35,3 +37,5 @@ public class CompositeSpecification : Specification {
 
 
 }
+
+//---------------------------------------------------------------------------------------------------------------------

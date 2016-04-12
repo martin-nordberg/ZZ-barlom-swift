@@ -6,22 +6,23 @@
 //---------------------------------------------------------------------------------------------------------------------
 
 ///
-/// Enumeration of attribute data types.
+/// Class representing a position in an input stream.
 ///
-public enum EDataType {
+public class Position {
 
-    case Boolean
+    public let name : String
 
-    case DateTime
+    public let column: Int
 
-    case Float64
+    public let line: Int
 
-    case Integer32
-
-    case String
-
-    case Uuid
+    public init( name: String, line: Int, column: Int ) {
+        self.name = name
+        self.line = line
+        self.column = column
+    }
 
 }
 
 //---------------------------------------------------------------------------------------------------------------------
+

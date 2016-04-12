@@ -3,6 +3,8 @@
 // Apache 2.0 License
 //
 
+//---------------------------------------------------------------------------------------------------------------------
+
 ///
 /// Protocol defining a constraint that is expected to be satisfied.
 ///
@@ -22,24 +24,25 @@ public protocol Constraint {
     func check(
         actualValue: ValueType,
         _ valueName: String
-    ) -> ConstraintCheckResult;
+    ) -> EConstraintCheckResult;
 
 }
 
+//---------------------------------------------------------------------------------------------------------------------
 
 ///
 /// Thunk for making Constraint into a generic type.
 ///
 public final class AnyConstraint<T>: Constraint {
 
-    private let _check: ( ( T, String ) -> ConstraintCheckResult )
+    private let _check: ( ( T, String ) -> EConstraintCheckResult )
 
     public init<U:Constraint where U.ValueType == T>( _ constraint: U ) {
         _check = constraint.check
     }
 
     public func check( actualValue: T,
-                       _ valueName: String ) -> ConstraintCheckResult {
+                       _ valueName: String ) -> EConstraintCheckResult {
         return _check( actualValue, valueName )
     }
 
@@ -53,3 +56,6 @@ public final class AnyConstraint<T>: Constraint {
         return AnyConstraint( OrConstraint( self, otherConstraint ) )
     }
 }
+
+//---------------------------------------------------------------------------------------------------------------------
+

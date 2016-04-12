@@ -3,10 +3,11 @@
 // Apache 2.0 License
 //
 
+//---------------------------------------------------------------------------------------------------------------------
+
 ///
 /// Sum type for possible parsing error messages.
 ///
-
 public enum EErrorMessage {
 
     /// An expected item (e.g. "identifier") was not found.
@@ -48,3 +49,6 @@ public enum EErrorMessage {
     }
 
 }
+
+//---------------------------------------------------------------------------------------------------------------------
+

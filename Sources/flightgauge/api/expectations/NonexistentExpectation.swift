@@ -17,7 +17,7 @@ public class NonexistentExpectation<T>
         self.valueName = valueName
     }
 
-    public func toBe( constraint: AnyConstraint<T> ) -> ConstraintCheckResult {
+    public func toBe( constraint: AnyConstraint<T> ) -> EConstraintCheckResult {
         if ( valueName == "value" ) {
             return .ConstraintCheckUnexpectedNull( message: "Expected a nonexistent value." );
         }
@@ -25,11 +25,11 @@ public class NonexistentExpectation<T>
         return .ConstraintCheckUnexpectedNull( message: "Expected a nonexistent value for ``valueName``." );
     }
 
-    public func toOptionallyBe( constraint: AnyConstraint<T> ) -> ConstraintCheckResult {
+    public func toOptionallyBe( constraint: AnyConstraint<T> ) -> EConstraintCheckResult {
         return .ConstraintCheckSuccess( message: "Ignored nonexistent but optional ``valueName``." );
     }
 
-    public func toNotExist() -> ConstraintCheckResult {
+    public func toNotExist() -> EConstraintCheckResult {
         return .ConstraintCheckSuccess( message: "Verified that \( self.valueName ) does not exist." )
     }
 

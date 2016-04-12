@@ -17,7 +17,7 @@ public protocol Expectation {
     ///
     func toBe(
         constraint: AnyConstraint<ValueType>
-    ) -> ConstraintCheckResult
+    ) -> EConstraintCheckResult
 
     ///
     /// Performs a constraint check if a value exists; gives back a constraint check result,
@@ -26,12 +26,12 @@ public protocol Expectation {
     ///
     func toOptionallyBe(
         constraint: AnyConstraint<ValueType>
-    ) -> ConstraintCheckResult
+    ) -> EConstraintCheckResult
 
     ///
     /// Performs a constraint check on a value that is expected to not exist.
     ///
-    func toNotExist() -> ConstraintCheckResult
+    func toNotExist() -> EConstraintCheckResult
 }
 
 ///
@@ -40,11 +40,11 @@ public protocol Expectation {
 
 public final class AnyExpectation<T>: Expectation {
 
-    private let _toBe: AnyConstraint<T> -> ConstraintCheckResult
+    private let _toBe: AnyConstraint<T> -> EConstraintCheckResult
 
-    private let _toOptionallyBe: AnyConstraint<T> -> ConstraintCheckResult
+    private let _toOptionallyBe: AnyConstraint<T> -> EConstraintCheckResult
 
-    private let _toNotExist: ( () -> ConstraintCheckResult )
+    private let _toNotExist: ( () -> EConstraintCheckResult )
 
     public init<U:Expectation where U.ValueType == T>( _ expectation: U ) {
         self._toBe = expectation.toBe
@@ -52,15 +52,15 @@ public final class AnyExpectation<T>: Expectation {
         self._toNotExist = expectation.toNotExist
     }
 
-    public func toBe( constraint: AnyConstraint<T> ) -> ConstraintCheckResult {
+    public func toBe( constraint: AnyConstraint<T> ) -> EConstraintCheckResult {
         return self._toBe( constraint )
     }
 
-    public func toOptionallyBe( constraint: AnyConstraint<T> ) -> ConstraintCheckResult {
+    public func toOptionallyBe( constraint: AnyConstraint<T> ) -> EConstraintCheckResult {
         return self._toOptionallyBe( constraint )
     }
 
-    public func toNotExist() -> ConstraintCheckResult {
+    public func toNotExist() -> EConstraintCheckResult {
         return self._toNotExist()
     }
 }

@@ -3,12 +3,16 @@
 // Apache 2.0 License
 //
 
+//---------------------------------------------------------------------------------------------------------------------
+
 ///
 /// Concrete constraint class enforces equality of an actual value with an expected value.
 ///
 public class EquatableConstraints<T where T: Equatable> {
 
+    ///
     /// Returns a constraint that checks that an actual value equals an expected value.
+    ///
     public func equalTo(
         expectedValue: T
     ) -> AnyConstraint<T> {
@@ -19,7 +23,9 @@ public class EquatableConstraints<T where T: Equatable> {
         return AnyConstraint( ComparisonConstraint<T>( checkCondition: compare, comparisonText: "equal to", comparableValue: expectedValue ) )
     }
 
+    ///
     /// Returns a constraint that checks that an actual value does not equal an expected value.
+    ///
     public func notEqualTo(
         expectedValue: T
     ) -> AnyConstraint<T> {
@@ -32,7 +38,9 @@ public class EquatableConstraints<T where T: Equatable> {
         return AnyConstraint( ComparisonConstraint<T>( checkCondition: compare, comparisonText: "not equal to", comparableValue: expectedValue ) )
     }
 
+    ///
     /// Returns a constraint that checks that an actual value equals an expected value (synonym for equalTo).
+    ///
     public func withValue(
         expectedValue: T
     ) -> AnyConstraint<T> {
@@ -40,4 +48,6 @@ public class EquatableConstraints<T where T: Equatable> {
     }
 
 }
+
+//---------------------------------------------------------------------------------------------------------------------
 

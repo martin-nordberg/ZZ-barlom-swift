@@ -5,12 +5,19 @@
 
 import flightspec
 
+//---------------------------------------------------------------------------------------------------------------------
+
 ///
-/// A compositie specification for the Flight Gear module.
+/// A composite specification for the Flight Gear module.
 ///
 public let allFlightGearSpecs = CompositeSpecification(
+
     title: "Flight Gear Specifications",
+
     childSpecifications: [
         UuidSpec()
     ]
+
 )
+
+//---------------------------------------------------------------------------------------------------------------------

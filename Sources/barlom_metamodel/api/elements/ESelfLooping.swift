@@ -3,6 +3,8 @@
 // Apache 2.0 License
 //
 
+//---------------------------------------------------------------------------------------------------------------------
+
 ///
 /// Flag for the allowed self-loops of an edge type.
 ///
@@ -17,7 +19,9 @@ public enum ESelfLooping {
     /// An edge type does allow self loops.
     case SelfLoopsAllowed
 
+    ///
     /// Determines whether this self looping is allowed.
+    ///
     public var isAllowed: Bool? {
         get {
             switch self {
@@ -28,7 +32,9 @@ public enum ESelfLooping {
         }
     }
 
+    ///
     /// Determines whether this self looping is not allowed.
+    ///
     public var isNotAllowed: Bool? {
         get {
             switch self {
@@ -39,14 +45,18 @@ public enum ESelfLooping {
         }
     }
 
+    ///
     /// Determines whether this self looping is unconstrained.
+    ///
     public var isUnconstrained: Bool {
         get {
             return self == SelfLoopsUnconstrained
         }
     }
 
+    ///
     /// Constructs a new self looping from a boolean value (true = allowed, false = not allowed, nil = unconstrained).
+    ///
     public static func fromBool( isAcyclic value: Bool? ) -> ESelfLooping {
         if let value = value {
             return value ? SelfLoopsAllowed : SelfLoopsNotAllowed
@@ -55,3 +65,5 @@ public enum ESelfLooping {
     }
 
 }
+
+//---------------------------------------------------------------------------------------------------------------------

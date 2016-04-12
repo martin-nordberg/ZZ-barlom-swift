@@ -3,20 +3,21 @@
 // Apache 2.0 License
 //
 
+//---------------------------------------------------------------------------------------------------------------------
+
 ///
 /// Top level function establishes the start of a declarative expectation.
 /// For example:
-/// ```
+///
 /// /* A stack starts out empty. */
 /// void testNewStack( void outcomes( ConstraintCheckResult* results ) ) {
 ///    let stack = Stack<Integer>();
 ///    // expected outcomes of the test
 ///    outcomes(
-///      expect( stack ).named( "stack" ).toBe( anIntegerStack.thatIsEmpty ),
-///      expect( stack.topIfPresent ).named( "top of stack" ).toNotExist()
+///      makeExpectation( stack, named: "stack" ).toBe( anIntegerStack.thatIsEmpty ),
+///      makeExpectation( stack.topIfPresent, named: "top of stack" ).toNotExist()
 ///    );
 /// }
-/// ```
 ///
 public func makeExpectation<T>( maybeActualValue: T?, named valueName: String = "value" ) -> AnyExpectation<T> {
 
@@ -28,15 +29,28 @@ public func makeExpectation<T>( maybeActualValue: T?, named valueName: String = 
 
 }
 
+//---------------------------------------------------------------------------------------------------------------------
 
-public func expect<T>( maybeActualValue: T?, named valueName: String = "value", toBe constraint: AnyConstraint<T> ) -> ConstraintCheckResult {
+public func expect<T>(
+    maybeActualValue: T?,
+    named valueName: String = "value",
+    toBe constraint: AnyConstraint<T>
+) -> EConstraintCheckResult {
 
     return makeExpectation( maybeActualValue, named: valueName ).toBe( constraint );
 
 }
 
-public func expect<T>( maybeActualValue: T?, named valueName: String = "value", toOptionallyBe constraint: AnyConstraint<T> ) -> ConstraintCheckResult {
+//---------------------------------------------------------------------------------------------------------------------
+
+public func expect<T>(
+    maybeActualValue: T?,
+    named valueName: String = "value",
+    toOptionallyBe constraint: AnyConstraint<T>
+) -> EConstraintCheckResult {
 
     return makeExpectation( maybeActualValue, named: valueName ).toOptionallyBe( constraint );
 
 }
+
+//---------------------------------------------------------------------------------------------------------------------

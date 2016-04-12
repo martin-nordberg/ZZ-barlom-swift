@@ -3,30 +3,32 @@
 // Apache 2.0 License
 //
 
+//---------------------------------------------------------------------------------------------------------------------
+
 ///
 /// Adapter class wraps an expectation and throws an assertion if it fails when checked.
 ///
 public class AssertedExpectation<T> {
 
-    private let expectation: AnyExpectation<T>
+    private let _expectation: AnyExpectation<T>
 
-    private let file: StaticString
+    private let _file: StaticString
 
-    private let line: UInt
+    private let _line: UInt
 
     init( _ expectation: AnyExpectation<T>, _ file: StaticString, _ line: UInt ) {
-        self.expectation = expectation;
-        self.file = file
-        self.line = line
+        self._expectation = expectation;
+        self._file = file
+        self._line = line
     }
 
     /// Performs a constraint check, giving back a constraint check result.
     public func toBe( @autoclosure constraint: () -> AnyConstraint<T> ) {
 #if !NDEBUG
-        let result = expectation.toBe( constraint() );
+        let result = _expectation.toBe( constraint() );
 
         if ( !result.isSuccess ) {
-            fatalError( result.message, file: self.file, line: self.line );
+            fatalError( result.message, file: self._file, line: self._line );
         }
 #endif
     }
@@ -35,10 +37,10 @@ public class AssertedExpectation<T> {
     /// succeeding if the tested actual value does not exist."
     public func toOptionallyBe( @autoclosure constraint: () -> AnyConstraint<T> ) {
 #if !NDEBUG
-        let result = expectation.toOptionallyBe( constraint() );
+        let result = _expectation.toOptionallyBe( constraint() );
 
         if ( !result.isSuccess ) {
-            fatalError( result.message, file: self.file, line: self.line );
+            fatalError( result.message, file: self._file, line: self._line );
         }
 #endif
     }
@@ -46,7 +48,7 @@ public class AssertedExpectation<T> {
     /// Performs a constraint check on a value that is expected to not exist.
     public func toNotExist() {
 #if !NDEBUG
-        let result = expectation.toNotExist();
+        let result = _expectation.toNotExist();
 
         if ( !result.isSuccess ) {
             fatalError( result.message );
@@ -54,3 +56,5 @@ public class AssertedExpectation<T> {
 #endif
     }
 }
+
+//---------------------------------------------------------------------------------------------------------------------
